@@ -14,10 +14,10 @@
 <div class="col-md-8">
 <form action="update.php" method="post">
 
-<div class="mb-3">
+<div class="mb-3 col-lg-5">
   <input type="hidden" name="id" value="<?php echo $d['id']; ?>">
   <label for="exampleFormControlInput1" class="form-label">Nomor Induk Mahasiswa </label>
-  <input type="number" class="form-control" id="nim" name="nim" placeholder="Masukan NIM" required value="<?php echo $d['nim']; ?>" >
+  <input type="text" class="form-control" id="nim" name="nim" placeholder="Masukan NIM" required value="<?php echo $d['nim']; ?>"  readonly>
 </div>
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Nama</label>
