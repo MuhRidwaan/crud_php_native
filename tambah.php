@@ -2,14 +2,33 @@
     include "master/header.php";
     include "master/nav.php";
 ?>
+
+<?php
+include "koneksi.php";
+
+// Ambil NIM tertinggi dari database
+$query = mysqli_query($conn, "SELECT MAX(nim) AS max_nim FROM data_mahasiswa");
+$result = mysqli_fetch_assoc($query);
+$maxNIM = $result['max_nim'];
+
+// Hitung NIM berikutnya
+if ($maxNIM) {
+    // Jika sudah ada data, tambahkan 1
+    $nextNIM = $maxNIM + 1;
+} else {
+    // Jika belum ada data, gunakan nilai awal
+    $nextNIM = 202301; // Sesuaikan dengan format NIM awal
+}
+?>
+
 <div class="container mt-5">
     <h2>Masukan Data Mahasiswa</h2>
 <div class="col-md-8">
 <form action="tambahProses.php" method="post">
 
-<div class="mb-3">
+<div class="mb-3 col-lg-4">
   <label for="exampleFormControlInput1" class="form-label">Nomor Induk Mahasiswa </label>
-  <input type="number" class="form-control" id="nim" name="nim" placeholder="Masukan NIM" required>
+  <input type="text" name="nim"  class="form-control" value="<?php echo $nextNIM; ?>" readonly>
 </div>
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Nama</label>
